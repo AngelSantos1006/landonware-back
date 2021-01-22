@@ -1,0 +1,21 @@
+service:
+ name: longonware-back
+
+plugins:
+ - 'serverless-plugin-typescript'
+ - serverless-plugin-optimize
+ - serverless-offline
+
+provider:
+ name: aws
+ runtime: nodejs12.x
+ environment:
+  LONDONWARE_HOST_DB: mongodb+srv://AngelSantos:zd2lIHUFLxdPYcML@cluster0.hhkfc.mongodb.net/londonware?retryWrites=true&w=majority
+
+functions:
+ main:
+   handler: src/lambda.handler
+   events:
+     - http:
+         method: any
+         path: /api-doc
